@@ -1,0 +1,36 @@
+.data_grid {
+    margin: 10px;
+}
+
+.data_grid__table_header {
+    display: flex;
+    padding: 5px;
+
+    color: #4d4d4d;
+    cursor: pointer;
+    font-weight: bold;
+
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.data_grid__table_header_col {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.data_grid__table_body {
+}
+
+.data_grid__table_body_row {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.data_grid__table_body_row_last {
+    border-bottom: none;
+}
+
+.data_grid__table_body_col {
+
+}

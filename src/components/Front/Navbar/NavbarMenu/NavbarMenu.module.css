@@ -1,0 +1,6 @@
+.navbar_menu {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    grid-area: navbar__menu;
+}

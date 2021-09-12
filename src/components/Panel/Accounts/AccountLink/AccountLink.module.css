@@ -1,0 +1,12 @@
+.account_link {
+    margin: 10px;
+}
+
+.account_link a {
+    text-decoration: none;
+    color: gray;
+}
+
+.account_link a.activeLink {
+    color: black;
+}

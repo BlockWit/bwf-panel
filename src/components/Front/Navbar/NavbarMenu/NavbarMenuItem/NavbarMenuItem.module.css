@@ -1,0 +1,15 @@
+.navbar_menu_item {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.navbar_menu_item a {
+    color: gray;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.navbar_menu_item a.activeLink {
+    color: #414144;
+    text-decoration: none;
+}
