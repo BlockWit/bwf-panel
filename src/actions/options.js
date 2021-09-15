@@ -1,5 +1,5 @@
 import axios from 'axios';
-import axiosConfig from "../axiosConfig";
+import axiosConfig from "../config/axiosConfig";
 
 export const FETCH_OPTIONS_STARTED = "FETCH_OPTIONS_STARTED";
 export const FETCH_OPTIONS_SUCCESS = "FETCH_OPTIONS_SUCCESS";

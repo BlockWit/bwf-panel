@@ -3,7 +3,7 @@ import styles from './Accounts.module.css';
 import axios from "axios";
 import DataGrid from "../common/DataGrid/DataGrid";
 import Box from "../common/Box/Box";
-import axiosConfig from "../../../axiosConfig";
+import axiosConfig from "../../../config/axiosConfig";
 
 const Accounts = (props) => {
 

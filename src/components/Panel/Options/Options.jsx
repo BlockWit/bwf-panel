@@ -3,7 +3,7 @@ import styles from './Options.module.css';
 import DataGrid from "../common/DataGrid/DataGrid";
 import Box from "../common/Box/Box";
 import useFetchingOptions from "../../../hooks/useFetchingOptions";
-import Loading from "../../Loading/Loading";
+import Loading from "../../common/Loading/Loading";
 
 
 const Options = (props) => {

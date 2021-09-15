@@ -1,10 +1,6 @@
-import useFetching from "./useFetching";
-import {useSelector} from "react-redux";
 import {fetchOptions} from "../actions/options";
+import useFetchingItems from "./useFetchingItems";
 
-const useFetchingOptions = () => {
-	useFetching(() => fetchOptions(), []);
-	return useSelector((state) => state.panel.options);
-}
+const useFetchingOptions = () => useFetchingItems(fetchOptions, state => state.panel.options)
 
 export default useFetchingOptions;

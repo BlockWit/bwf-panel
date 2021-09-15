@@ -4,9 +4,11 @@ import accountReducer from "../components/reducers/account-reducer";
 import frontReducer from "../components/reducers/front-reducer";
 import accountsReducer from "../components/reducers/accounts-reducer";
 import thunk from "redux-thunk";
+import authReducer from "../components/reducers/auth-reducer";
 
 let reducers =
 	combineReducers({
+		auth: authReducer,
 		account: accountReducer,
 		front: frontReducer,
 		panel: combineReducers({
