@@ -1,6 +1,22 @@
 .navbar_menu_item {
-    margin-left: 10px;
-    margin-right: 10px;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.navbar_menu_item__content {
+    display: inline-flex;
+    margin-top: 10px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.navbar_menu_item__content_icon {
+    margin-top: 1px;
+    margin-right: 4px;
+}
+
+.navbar_menu_item__content_text {
+
 }
 
 .navbar_menu_item a {
@@ -11,5 +27,4 @@
 
 .navbar_menu_item a.activeLink {
     color: #414144;
-    text-decoration: none;
 }
