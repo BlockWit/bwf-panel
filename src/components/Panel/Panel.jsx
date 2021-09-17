@@ -1,11 +1,11 @@
 import React from "react";
 import Navbar from "./Navbar/Navbar";
 import Sidebar from "./Sidebar/Sidebar";
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 import Profile from "./Profile/Profile";
 import AccountsContainer from "./Accounts/AccountsContainer";
 import Options from "./Options/Options";
-import {PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../config/urlsConfig";
+import {PATH_PANEL, PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../config/urlsConfig";
 import {createTheme, CssBaseline, MuiThemeProvider} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "./common/Box/Box";
@@ -55,6 +55,7 @@ const Panel = (props) => {
 				<div className={classes.drawerHeader}></div>
 				<Box>
 					<Switch>
+						<Route exact path={PATH_PANEL} component={() => <Redirect to={PATH_PANEL_PROFILE}/>}/>
 						<Route path={PATH_PANEL_PROFILE} component={() => <Profile state={state.account}/>}/>
 						<Route path={PATH_PANEL_ACCOUNTS} component={() => <AccountsContainer state={state.accounts}/>}/>
 						<Route path={PATH_PANEL_OPTIONS} component={() => <Options/>}/>

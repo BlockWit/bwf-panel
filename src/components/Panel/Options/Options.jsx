@@ -1,49 +1,11 @@
-import React, {useEffect, useState} from "react";
-import {useQuery} from "react-query";
-import axiosConfig from "../../../config/axiosConfig";
-import {API_OPTIONS_SUFFIX} from "../../../config/apiConfig";
-import {getTokenFromStorage} from "../../../utils/auth/storageTokenOperations";
-import {useDispatch} from "react-redux";
-import axios from "axios";
-import {logout} from "../../../actions/auth";
+import React from "react";
 import styles from './Options.module.css';
 import Loading from "../../common/Loading/Loading";
 import DataGrid from "../common/DataGrid/DataGrid";
-
-// TODO: Remove common code outside
-function fetchPosts(changeStateCallback) {
-	return axios.get(axiosConfig.baseUrl + API_OPTIONS_SUFFIX, {
-		headers: {
-			Authorization: `Bearer ${getTokenFromStorage()}`
-		}
-	}).then((response) => {
-		changeStateCallback(false);
-		return response.data;
-	}).catch(error => {
-		if (error.response && error.response.status === 401) {
-			changeStateCallback(true);
-		}
-		throw Error(error);
-	})
-}
-
-const useAuthQuery = (key, fn) => {
-	const [authRedirect, setAuthRedirect] = useState(false);
-	const queryResult = useQuery(key, () => fn((value) => setAuthRedirect(value)), {fetchPolicy: 'cache-only'});
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		if (authRedirect) {
-			dispatch(logout())
-		}
-	}, [dispatch, authRedirect]);
-
-	return queryResult;
-}
+import useFetchOptions from "../../../hooks/useFetchOptions";
 
 const Options = (props) => {
-	const queryResult = useAuthQuery("options", fetchPosts);
-	const {data, error, isError, isLoading} = queryResult;
+	const {data, error, isError, isLoading} = useFetchOptions();
 
 	if (isLoading)
 		return <Loading/>

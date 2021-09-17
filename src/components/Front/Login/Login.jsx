@@ -99,6 +99,7 @@ const Login = (props) => {
 											variant="outlined"
 											value={credentials.password}
 											onChange={onChange}
+											autoComplete="on"
 										/>
 									</Grid>
 								</Grid>
