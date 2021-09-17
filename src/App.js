@@ -15,7 +15,7 @@ const App = (props) => {
 		<Switch>
 			<Route exact path={PATH_ROOT} component={() => <Redirect to={PATH_FRONT}/>}/>
 			<Route exact path={PATH_LOGOUT} component={() => <Logout/>}/>
-			<Route path={PATH_FRONT} component={() => <Front state={state.front}/>}/>
+			<Route path={PATH_FRONT} component={() => <Front/>}/>
 			<PrivateRoute path={PATH_PANEL} component={() => <Panel state={{...state.panel, account: state.account}}/>}/>
 		</Switch>
 	);

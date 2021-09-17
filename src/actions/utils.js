@@ -25,14 +25,12 @@ export function fetchJsonDataGET(props) {
 }
 
 export function fetchJsonData(props) {
-	console.log(props);
 	const {url, httpInit, fetchDataBegin, fetchDataSuccess, fetchDataFailure, fetchDataAuthError} = props;
 	let httpRequest = null;
 	let httpStatus = 0;
 	let httpStatusText = "";
 	let ok = false;
 	const targetURL = axiosConfig.baseUrl + url;
-	console.log("FETCH DATA from URL ", targetURL);
 	return dispatch => {
 		dispatch(fetchDataBegin());
 		try {
@@ -47,7 +45,6 @@ export function fetchJsonData(props) {
 				return res;
 			})
 			.then(res => {
-				console.log("S3");
 				switch (httpStatus) {
 					case 200:
 					case 201:

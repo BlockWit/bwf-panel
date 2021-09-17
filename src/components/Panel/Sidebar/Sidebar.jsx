@@ -1,48 +1,66 @@
 import React from "react";
-import styles from './Sidebar.module.css';
-import {NavLink, useRouteMatch} from "react-router-dom";
-import {PATH_LOGOUT, PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../../config/urlsConfig";
+import {NavLink} from "react-router-dom";
+import {Divider, Drawer, Typography} from "@material-ui/core";
+import {makeStyles} from "@material-ui/core/styles";
+import {drawerWidth} from "../Panel";
+import {PATH_FRONT} from "../../../config/urlsConfig";
+import SidebarMenu from "./SidebarMenu/SidebarMenu";
 
-const Sidebar = () => {
+const useStyles = makeStyles((theme) => ({
+	drawer: {
+		width: drawerWidth,
+		flexShrink: 0,
+		background: "gray"
+	},
+	drawerPaper: {
+		width: drawerWidth,
+		background: "#212529",
 
-	let {url} = useRouteMatch();
+		//background: "#4f5962",
+		color: "#CCCCCC"
+	},
+	toolbar: {
+		display: 'flex',
+		alignItems: 'center',
+		justifyContent: 'flex-end',
+		padding: theme.spacing(0, 1),
+		// necessary for content to be below app bar
+		...theme.mixins.toolbar,
+	},
+	sidebarLogo: {
+		height: '36px',
+		margin: "auto"
+	},
+	brandName: {
+		color: "#CCCCCC",
+		margin: "auto",
+	},
+	divider: {
+		background: "#565656"
+	}
+}));
+
+const Sidebar = ({open}) => {
+	const classes = useStyles();
 
 	return (
-		<div className={styles.sidebar}>
-
-			<div className={styles.sidebar__header + ' ' + styles.mod_bottom_line}>
-				<div className={styles.sidebar__header_logo}>
-					<img src='https://blockwit.io/assets/images/sidebar_logo.png' alt='BlockWit'/>
-				</div>
-				<div className={styles.sidebar__header_text}>
-					BlockWit
-				</div>
+		<Drawer variant="persistent"
+						anchor="left"
+						open={open}
+						PaperProps={{elevation: 10}}
+						classes={{
+							paper: classes.drawerPaper
+						}}
+		>
+			<div className={classes.toolbar}>
+				<NavLink to={PATH_FRONT}>
+					<img src='/logo_light.png' alt='BlockWit' className={classes.sidebarLogo}/>
+				</NavLink>
+				<Typography variant='h6' className={classes.brandName}>BLOCKWIT</Typography>
 			</div>
-
-			<div className={styles.sidebar__menu}>
-				<div className={styles.sidebar__menu_block}>
-					<div className={styles.sidebar__menu_block_content + ' ' + styles.mod_bottom_line}>
-						<div className={styles.sidebar__menu_block_content_menu_item}>
-							<NavLink to={PATH_PANEL_PROFILE} activeClassName={styles.activeLink}>Profile</NavLink>
-						</div>
-					</div>
-					<div className={styles.sidebar__menu_block_content + ' ' + styles.mod_bottom_line}>
-						<div className={styles.sidebar__menu_block_content_menu_item}>
-							<NavLink to={PATH_PANEL_ACCOUNTS} activeClassName={styles.activeLink}>Accounts</NavLink>
-						</div>
-						<div className={styles.sidebar__menu_block_content_menu_item}>
-							<NavLink to={PATH_PANEL_OPTIONS} activeClassName={styles.activeLink}>Options</NavLink>
-						</div>
-					</div>
-					<div className={styles.sidebar__menu_block_content + ' ' + styles.mod_bottom_line}>
-						<div className={styles.sidebar__menu_block_content_menu_item}>
-							<NavLink to={PATH_LOGOUT} activeClassName={styles.activeLink}>Logout</NavLink>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		</div>
+			<Divider className={classes.divider}/>
+			<SidebarMenu/>
+		</Drawer>
 	);
 }
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 export const PATH_ROOT = '/';
 
 export const PATH_REL_PANEL = '/panel';

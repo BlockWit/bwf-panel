@@ -1,22 +1,44 @@
 import React from "react";
-import styles from './Navbar.module.css';
-import {NavLink, useRouteMatch} from "react-router-dom";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import NavbarMenu from "../../Front/Navbar/NavbarMenu/NavbarMenu";
+import {makeStyles} from "@material-ui/core/styles";
+import {drawerWidth} from "../Panel";
+import {IconButton} from "@material-ui/core";
+import MenuIcon from '@material-ui/icons/Menu';
+import clsx from "clsx";
 
-const Navbar = (props) => {
+const useStyles = makeStyles((theme) => ({
+	appBar: {
+		background: 'white',
+		color: "gray",
+		zIndex: theme.zIndex.drawer + 1
+	},
+	appBarOpen: {
+		marginLeft: drawerWidth,
+		width: `calc(100% - ${drawerWidth}px)`
+	},
+	appBarClose: {}
+}));
 
-	let {url} = useRouteMatch();
+
+const Navbar = ({handleToggleOpen, open}) => {
+	const classes = useStyles();
 
 	return (
-		<div className={styles.navbar}>
-			<div className={styles.navbar__menu}>
-				<div className={styles.navbar__menu_item}>
-					<NavLink to={`${url}/profile`} activeClassName={styles.activeLink}>Profile</NavLink>
-				</div>
-				<div className={styles.navbar__menu_item}>
-					<NavLink to={`${url}/dialogs`} activeClassName={styles.activeLink}>Messages</NavLink>
-				</div>
-			</div>
-		</div>
+		<AppBar position="fixed" elevation={3}
+						className={clsx(classes.appBar, {[classes.appBarOpen]: open, [classes.appBarClose]: !open})}>
+			<Toolbar>
+				<IconButton
+					color="inherit"
+					aria-label="open drawer"
+					onClick={handleToggleOpen}
+					edge="start">
+					<MenuIcon/>
+				</IconButton>
+				<NavbarMenu/>
+			</Toolbar>
+		</AppBar>
 	);
 }
 

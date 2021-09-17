@@ -1,44 +1,35 @@
-//import React from "react";
-import styles from './Navbar.module.css';
-//import MenuIcon from '@material-ui/icons/Menu';
-//import {AppBar, Button, IconButton, Toolbar, Typography} from "@material-ui/core";
 import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import {Box, Container, IconButton, Typography} from "@material-ui/core";
-import NavbarMenuItem from "./NavbarMenu/NavbarMenuItem/NavbarMenuItem";
-import {PATH_FRONT_LOGIN, PATH_LOGOUT, PATH_PANEL} from "../../../config/urlsConfig";
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import {AccountBox, AccountCircle} from "@material-ui/icons";
-import {useHistory} from "react-router-dom";
+import {Container} from "@material-ui/core";
+import NavbarMenu from "./NavbarMenu/NavbarMenu";
+import {NavLink} from "react-router-dom";
+import {PATH_FRONT} from "../../../config/urlsConfig";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
 		background: 'white',
 		color: "gray"
+	},
+	appBarLogo: {
+		height: '45px',
+		marginLeft: '10px',
+		marginRight: '20px'
 	}
 }));
 
-const Navbar = (props) => {
+const Navbar = () => {
 	const classes = useStyles();
-	const history = useHistory();
 
 	return (
 		<AppBar position="static" className={classes.appBar} elevation={3}>
 			<Container>
 				<Toolbar>
-					<div className={styles.navbar__logo}>
-						<img src='https://blockwit.io/assets/images/logo.png' alt='BlockWit'/>
-					</div>
-
-					<Box display='flex' flexGrow={1}>
-						<NavbarMenuItem to={PATH_PANEL} name='panel' auth={true}/>
-					</Box>
-
-					<NavbarMenuItem to={PATH_FRONT_LOGIN} name='login' icon={<AccountBox/>} auth={false}/>
-					<NavbarMenuItem to={PATH_LOGOUT} name='logout' icon={<ExitToAppIcon/>} auth={true}/>
-
+					<NavLink to={PATH_FRONT}>
+						<img src='https://blockwit.io/assets/images/logo.png' alt='BlockWit' className={classes.appBarLogo}/>
+					</NavLink>
+					<NavbarMenu/>
 				</Toolbar>
 			</Container>
 		</AppBar>

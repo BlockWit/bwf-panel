@@ -19,7 +19,7 @@ const authReducer = (state = initialState, action) => {
 			fail: false
 		};
 	} else if (action.type === AUTH_SUCCESS) {
-		setTokenToStorage(action.payload)
+		setTokenToStorage(action.payload.token);
 		return {
 			...state,
 			authenticated: true,
