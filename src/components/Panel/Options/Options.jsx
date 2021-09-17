@@ -10,36 +10,33 @@ import styles from './Options.module.css';
 import Loading from "../../common/Loading/Loading";
 import DataGrid from "../common/DataGrid/DataGrid";
 
-
-function fetchPosts() {
-	console.log("FETCH");
+// TODO: Remove common code outside
+function fetchPosts(changeStateCallback) {
 	return axios.get(axiosConfig.baseUrl + API_OPTIONS_SUFFIX, {
 		headers: {
 			Authorization: `Bearer ${getTokenFromStorage()}`
 		}
-	}).then((response) => response.data)
+	}).then((response) => {
+		changeStateCallback(false);
+		return response.data;
+	}).catch(error => {
+		if (error.response && error.response.status === 401) {
+			changeStateCallback(true);
+		}
+		throw Error(error);
+	})
 }
 
 const useAuthQuery = (key, fn) => {
-	const queryResult = useQuery(key, fn, {fetchPolicy: 'cache-only'});
-	const {error, isError, isLoading} = queryResult;
+	const [authRedirect, setAuthRedirect] = useState(false);
+	const queryResult = useQuery(key, () => fn((value) => setAuthRedirect(value)), {fetchPolicy: 'cache-only'});
 	const dispatch = useDispatch();
 
-	const [authRedirect, setAuthRedirect] = useState(false);
-
 	useEffect(() => {
-		console.log("use effect start : ", authRedirect, isError, isLoading);
-		if (!isLoading && isError && error.response && error.response.status === 401) {
-			console.log("use effect redirect error : ", authRedirect, isError, isLoading);
-			if (authRedirect) {
-				console.log("use effect redirect error auth branch: ", authRedirect, isError, isLoading);
-				dispatch(logout())
-			} else {
-				console.log("use effect redirect error non auth branch: ", authRedirect, isError, isLoading);
-				setAuthRedirect(true);
-			}
+		if (authRedirect) {
+			dispatch(logout())
 		}
-	}, [authRedirect, isLoading, error]);
+	}, [dispatch, authRedirect]);
 
 	return queryResult;
 }
