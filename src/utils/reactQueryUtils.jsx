@@ -2,8 +2,8 @@ import axios from "axios";
 import axiosConfig from "../config/axiosConfig";
 import {getTokenFromStorage} from "./auth/storageTokenOperations";
 
-const fetchItems = (relativeUrl, authRedirectCallback) => {
-	return axios.get(axiosConfig.baseUrl + relativeUrl, {
+async function fetchItems(relativeUrl, authRedirectCallback) {
+	return await axios.get(axiosConfig.baseUrl + relativeUrl, {
 		headers: {
 			Authorization: `Bearer ${getTokenFromStorage()}`
 		}
