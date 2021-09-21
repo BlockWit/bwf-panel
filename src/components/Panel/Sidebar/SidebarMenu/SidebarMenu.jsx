@@ -2,7 +2,7 @@ import {Divider, List, ListItem, ListItemIcon, ListItemText} from "@material-ui/
 import React from "react";
 import {AccountCircle} from "@material-ui/icons";
 import {makeStyles} from "@material-ui/core/styles";
-import {PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../../../config/urlsConfig";
+import {PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../../../config/urlsConfig";
 import {NavLink} from "react-router-dom";
 
 export const MT_DIVIDER = "MT_DIVIDER";
@@ -81,6 +81,12 @@ const SidebarMenu = () => {
 		},
 		{
 			"type": MT_DIVIDER,
+		},
+		{
+			"type": MT_ITEM,
+			"icon": <AccountCircle className={classes.iconColor}/>,
+			"name": "Accounts",
+			"link": PATH_PANEL_ACCOUNTS
 		},
 		{
 			"type": MT_ITEM,

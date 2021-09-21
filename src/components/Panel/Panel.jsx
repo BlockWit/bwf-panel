@@ -4,10 +4,11 @@ import Sidebar from "./Sidebar/Sidebar";
 import {Redirect, Route, Switch} from "react-router-dom";
 import Profile from "./Profile/Profile";
 import Options from "./Options/Options";
-import {PATH_PANEL, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../config/urlsConfig";
+import {PATH_PANEL, PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../config/urlsConfig";
 import {createTheme, CssBaseline, MuiThemeProvider} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "./common/Box/Box";
+import Accounts from "./Accounts/Accounts";
 
 const panelTheme = createTheme({});
 
@@ -42,8 +43,6 @@ const Panel = (props) => {
 
 	const handleToggleOpen = () => setOpen(!open);
 
-	let state = props.state;
-
 	return (
 		<MuiThemeProvider theme={panelTheme}>
 			<CssBaseline/>
@@ -55,7 +54,8 @@ const Panel = (props) => {
 				<Box>
 					<Switch>
 						<Route exact path={PATH_PANEL} component={() => <Redirect to={PATH_PANEL_PROFILE}/>}/>
-						<Route path={PATH_PANEL_PROFILE} component={() => <Profile state={state.account}/>}/>
+						<Route path={PATH_PANEL_PROFILE} component={() => <Profile/>}/>
+						<Route path={PATH_PANEL_ACCOUNTS} component={() => <Accounts/>}/>
 						<Route path={PATH_PANEL_OPTIONS} component={() => <Options/>}/>
 					</Switch>
 				</Box>

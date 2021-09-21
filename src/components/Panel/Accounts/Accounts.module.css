@@ -1,0 +1,25 @@
+.accounts__header_col_id {
+    min-width: 20px;
+    ext-align: right;
+}
+
+.accounts__header_col_login {
+    min-width: 300px;
+}
+
+.accounts__header_col_email {
+    min-width: 300px;
+}
+
+.accounts__body_col_id {
+    min-width: 20px;
+    ext-align: right;
+}
+
+.accounts__body_col_login {
+    min-width: 300px;
+}
+
+.accounts__body_col_email {
+    min-width: 300px;
+}

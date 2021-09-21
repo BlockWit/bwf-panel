@@ -1,22 +1,10 @@
 import React from "react";
 import styles from './Options.module.css';
-import Loading from "../../common/Loading/Loading";
 import DataGrid from "../common/DataGrid/DataGrid";
 import useFetchOptions from "../../../hooks/useFetchOptions";
+import usePerformQueryComponent from "../../../hooks/common/usePerformQueryComponent";
 
-const Options = (props) => {
-	const {data, error, isError, isLoading} = useFetchOptions();
-
-	if (isLoading)
-		return <Loading/>
-
-	if (isError) {
-		if (error) {
-			return 'An error has occurred: ' + error.message;
-		} else {
-			return 'An error has occurred';
-		}
-	}
+const Options = (props) => usePerformQueryComponent(useFetchOptions, (data) => {
 
 	let preparedProps = {
 		header: [
@@ -40,7 +28,7 @@ const Options = (props) => {
 		<DataGrid state={preparedProps}/>
 	);
 
-}
+})
 
 export default Options;
 
