@@ -3,8 +3,8 @@ import useFetchAuthQuery from "./common/useFetchAuthQuery";
 
 export const DK_OPTIONS = "options";
 
-const useFetchOptions = () => {
-	return useFetchAuthQuery(DK_OPTIONS, API_OPTIONS);
+const useFetchOptions = (params) => {
+	return useFetchAuthQuery(DK_OPTIONS, API_OPTIONS, params);
 }
 
 export default useFetchOptions;

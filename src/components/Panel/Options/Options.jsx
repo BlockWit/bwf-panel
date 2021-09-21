@@ -2,9 +2,11 @@ import React from "react";
 import styles from './Options.module.css';
 import DataGrid from "../common/DataGrid/DataGrid";
 import useFetchOptions from "../../../hooks/useFetchOptions";
-import usePerformQueryComponent from "../../../hooks/common/usePerformQueryComponent";
+//import usePerformQueryComponent from "../../../hooks/common/usePerformQueryComponent";
+import usePerformPageableQueryComponent from "../../../hooks/common/usePerformPageableQueryComponent";
+import {Typography} from "@material-ui/core";
 
-const Options = (props) => usePerformQueryComponent(useFetchOptions, (data) => {
+const Options = (props) => usePerformPageableQueryComponent(useFetchOptions, (data, page, setPage) => {
 
 	let preparedProps = {
 		header: [
@@ -25,7 +27,11 @@ const Options = (props) => usePerformQueryComponent(useFetchOptions, (data) => {
 	}
 
 	return (
-		<DataGrid state={preparedProps}/>
+		<>
+			<Typography>Page: {page}</Typography>
+			<Pagination count={10} shape="rounded" />
+			<DataGrid state={preparedProps}/>
+		</>
 	);
 
 })
