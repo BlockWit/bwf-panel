@@ -6,13 +6,15 @@ import {drawerWidth} from "../Panel";
 import {
 	PATH_FRONT,
 	PATH_PANEL_ADMIN_ACCOUNTS,
+	PATH_PANEL_ADMIN_MEDIA,
 	PATH_PANEL_ADMIN_OPTIONS,
 	PATH_PANEL_ADMIN_PERMISSIONS,
+	PATH_PANEL_ADMIN_POSTS,
 	PATH_PANEL_ADMIN_ROLES,
 	PATH_PANEL_PROFILE
 } from "../../../config/urlsConfig";
 import SidebarMenu, {MT_DIVIDER, MT_EXPANDABLE_ITEM, MT_ITEM} from "./SidebarMenu/SidebarMenu";
-import {AccountCircle, Lock, PeopleAlt, Settings, VpnKey} from "@material-ui/icons";
+import {AccountCircle, Description, Lock, PeopleAlt, PermMedia, Settings, VpnKey} from "@material-ui/icons";
 import {useRoles} from "../../../hooks/useRoles";
 import {ROLES_ADMIN} from "../../../utils/roles";
 
@@ -73,6 +75,27 @@ const Sidebar = ({open}) => {
 	]
 
 	if (roles.includes(ROLES_ADMIN)) {
+		menu.push({"type": MT_DIVIDER});
+		menu.push(
+			{
+				"type": MT_EXPANDABLE_ITEM,
+				"name": "content",
+				"children": [
+					{
+						"type": MT_ITEM,
+						"icon": <Description className={classes.iconColor}/>,
+						"name": "posts",
+						"link": PATH_PANEL_ADMIN_POSTS
+					},
+					{
+						"type": MT_ITEM,
+						"icon": <PermMedia className={classes.iconColor}/>,
+						"name": "media",
+						"link": PATH_PANEL_ADMIN_MEDIA
+					}
+				]
+			}
+		);
 		menu.push({"type": MT_DIVIDER});
 		menu.push(
 			{

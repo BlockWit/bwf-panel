@@ -7,8 +7,10 @@ import AdminOptions from "./admin/AdminOptions/AdminOptions";
 import {
 	PATH_PANEL,
 	PATH_PANEL_ADMIN_ACCOUNTS,
+	PATH_PANEL_ADMIN_MEDIA,
 	PATH_PANEL_ADMIN_OPTIONS,
 	PATH_PANEL_ADMIN_PERMISSIONS,
+	PATH_PANEL_ADMIN_POSTS,
 	PATH_PANEL_ADMIN_ROLES,
 	PATH_PANEL_PROFILE
 } from "../../config/urlsConfig";
@@ -16,10 +18,11 @@ import {createTheme, CssBaseline, MuiThemeProvider} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "./common/Box/Box";
 import AdminAccounts from "./admin/AdminAccounts/AdminAccounts";
-import AdminRoles from "./admin/AdminRoles/AdminRoles";
+import AdminPosts from "./admin/AdminRoles/AdminPosts";
 import AdminPermissions from "./admin/AdminPermissions/AdminPermissions";
 import RoleProtected from "../common/RoleProtected/RoleProtected";
 import {ROLES_ADMIN} from "../../utils/roles";
+import AdminMedia from "./admin/AdminMedia/AdminMedia";
 
 const panelTheme = createTheme({});
 
@@ -67,8 +70,10 @@ const Panel = (props) => {
 						<Route exact path={PATH_PANEL} component={() => <Redirect to={PATH_PANEL_PROFILE}/>}/>
 						<Route path={PATH_PANEL_PROFILE} component={() => <Profile/>}/>
 						<RoleProtected role={ROLES_ADMIN}>
+							<Route path={PATH_PANEL_ADMIN_MEDIA} component={() => <AdminMedia/>}/>
+							<Route path={PATH_PANEL_ADMIN_POSTS} component={() => <AdminPosts/>}/>
 							<Route path={PATH_PANEL_ADMIN_ACCOUNTS} component={() => <AdminAccounts/>}/>
-							<Route path={PATH_PANEL_ADMIN_ROLES} component={() => <AdminRoles/>}/>
+							<Route path={PATH_PANEL_ADMIN_ROLES} component={() => <AdminPosts/>}/>
 							<Route path={PATH_PANEL_ADMIN_PERMISSIONS} component={() => <AdminPermissions/>}/>
 							<Route path={PATH_PANEL_ADMIN_OPTIONS} component={() => <AdminOptions/>}/>
 						</RoleProtected>
