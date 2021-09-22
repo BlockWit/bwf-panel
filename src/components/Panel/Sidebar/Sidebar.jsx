@@ -1,11 +1,20 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {Divider, Drawer, ListItemText, Typography} from "@material-ui/core";
+import {Divider, Drawer, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {drawerWidth} from "../Panel";
-import {PATH_FRONT, PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../../config/urlsConfig";
+import {
+	PATH_FRONT,
+	PATH_PANEL_ADMIN_ACCOUNTS,
+	PATH_PANEL_ADMIN_OPTIONS,
+	PATH_PANEL_ADMIN_PERMISSIONS,
+	PATH_PANEL_ADMIN_ROLES,
+	PATH_PANEL_PROFILE
+} from "../../../config/urlsConfig";
 import SidebarMenu, {MT_DIVIDER, MT_EXPANDABLE_ITEM, MT_ITEM} from "./SidebarMenu/SidebarMenu";
-import {AccountCircle, PeopleAlt, Settings} from "@material-ui/icons";
+import {AccountCircle, Lock, PeopleAlt, Settings, VpnKey} from "@material-ui/icons";
+import {useRoles} from "../../../hooks/useRoles";
+import {ROLES_ADMIN} from "../../../utils/roles";
 
 const useStyles = makeStyles((theme) => ({
 	drawer: {
@@ -46,6 +55,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Sidebar = ({open}) => {
 	const classes = useStyles();
+	const roles = useRoles();
 
 	const menu = [
 		{
@@ -60,31 +70,44 @@ const Sidebar = ({open}) => {
 		// 	"name": "posts",
 		// 	"link": PATH_PANEL_PROFILE
 		// },
-		{
-			"type": MT_DIVIDER,
-		},
-		{
-			"type": MT_DIVIDER,
-		},
-		{
-			"type": MT_EXPANDABLE_ITEM,
-			"name": "administration",
-			"children": [
-				{
-					"type": MT_ITEM,
-					"icon": <PeopleAlt className={classes.iconColor}/>,
-					"name": "accounts",
-					"link": PATH_PANEL_ACCOUNTS
-				},
-				{
-					"type": MT_ITEM,
-					"icon": <Settings className={classes.iconColor}/>,
-					"name": "options",
-					"link": PATH_PANEL_OPTIONS
-				}
-			]
-		}
 	]
+
+	if (roles.includes(ROLES_ADMIN)) {
+		menu.push({"type": MT_DIVIDER});
+		menu.push(
+			{
+				"type": MT_EXPANDABLE_ITEM,
+				"name": "administration",
+				"children": [
+					{
+						"type": MT_ITEM,
+						"icon": <PeopleAlt className={classes.iconColor}/>,
+						"name": "accounts",
+						"link": PATH_PANEL_ADMIN_ACCOUNTS
+					},
+					{
+						"type": MT_ITEM,
+						"icon": <Lock className={classes.iconColor}/>,
+						"name": "roles",
+						"link": PATH_PANEL_ADMIN_ROLES
+					},
+					{
+						"type": MT_ITEM,
+						"icon": <VpnKey className={classes.iconColor}/>,
+						"name": "permissions",
+						"link": PATH_PANEL_ADMIN_PERMISSIONS
+					},
+					{
+						"type": MT_ITEM,
+						"icon": <Settings className={classes.iconColor}/>,
+						"name": "options",
+						"link": PATH_PANEL_ADMIN_OPTIONS
+					}
+				]
+			}
+		);
+	}
+
 
 	return (
 		<Drawer variant="persistent"

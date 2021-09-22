@@ -55,7 +55,7 @@ const ExpandableSidebarMenuItem = ({index, item}) => {
 
 	let childrenActive = false;
 	item.children.forEach(subItem => {
-		if (subItem.link.startsWith(location.pathname))
+		if (location.pathname.startsWith(subItem.link))
 			childrenActive = true;
 	});
 

@@ -1,0 +1,17 @@
+.permissions__header_col_id {
+    min-width: 20px;
+    ext-align: right;
+}
+
+.permissions__header_col_name {
+    min-width: 300px;
+}
+
+.permissions__body_col_id {
+    min-width: 20px;
+    ext-align: right;
+}
+
+.permissions__body_col_name {
+    min-width: 300px;
+}

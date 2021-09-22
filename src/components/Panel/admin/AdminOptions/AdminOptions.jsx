@@ -1,9 +1,9 @@
 import React from "react";
-import styles from './Options.module.css';
-import useFetchOptions from "../../../hooks/useFetchOptions";
-import PaginationDataGrid from "../../common/PaginationDataGrid/PaginationDataGrid";
+import styles from './AdminOptions.module.css';
+import PaginationDataGrid from "../../../common/PaginationDataGrid/PaginationDataGrid";
+import useFetchAdminOptions from "../../../../hooks/useFetchAdminOptions";
 
-const Options = (props) => {
+const AdminOptions = (props) => {
 
 	const prepareItems = (items) => ({
 		header: [
@@ -23,9 +23,9 @@ const Options = (props) => {
 		data: items.map(t => [t.id, t.name, t.type, t.value, t.description])
 	})
 
-	return <PaginationDataGrid dataFetcher={useFetchOptions} itemsPerformer={prepareItems}/>;
+	return <PaginationDataGrid dataFetcher={useFetchAdminOptions} itemsPerformer={prepareItems}/>;
 
 }
 
-export default Options;
+export default AdminOptions;
 

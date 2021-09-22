@@ -1,9 +1,9 @@
 import React from "react";
-import styles from './Accounts.module.css';
-import useFetchAccounts from "../../../hooks/useFetchAccounts";
-import PaginationDataGrid from "../../common/PaginationDataGrid/PaginationDataGrid";
+import styles from './AdminAccounts.module.css';
+import PaginationDataGrid from "../../../common/PaginationDataGrid/PaginationDataGrid";
+import useFetchAdminAccounts from "../../../../hooks/useFetchAdminAccounts";
 
-const Accounts = (props) => {
+const AdminAccounts = (props) => {
 
 	const prepareItems = (items) => ({
 		header: [
@@ -19,8 +19,8 @@ const Accounts = (props) => {
 		data: items.map(t => [t.id, t.login, t.email])
 	});
 
-	return <PaginationDataGrid dataFetcher={useFetchAccounts} itemsPerformer={prepareItems}/>;
+	return <PaginationDataGrid dataFetcher={useFetchAdminAccounts} itemsPerformer={prepareItems}/>;
 
 }
 
-export default Accounts;
+export default AdminAccounts;

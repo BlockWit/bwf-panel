@@ -3,12 +3,23 @@ import Navbar from "./Navbar/Navbar";
 import Sidebar from "./Sidebar/Sidebar";
 import {Redirect, Route, Switch} from "react-router-dom";
 import Profile from "./Profile/Profile";
-import Options from "./Options/Options";
-import {PATH_PANEL, PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../config/urlsConfig";
-import {createTheme, CssBaseline, ListItemText, MuiThemeProvider} from "@material-ui/core";
+import AdminOptions from "./admin/AdminOptions/AdminOptions";
+import {
+	PATH_PANEL,
+	PATH_PANEL_ADMIN_ACCOUNTS,
+	PATH_PANEL_ADMIN_OPTIONS,
+	PATH_PANEL_ADMIN_PERMISSIONS,
+	PATH_PANEL_ADMIN_ROLES,
+	PATH_PANEL_PROFILE
+} from "../../config/urlsConfig";
+import {createTheme, CssBaseline, MuiThemeProvider} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "./common/Box/Box";
-import Accounts from "./Accounts/Accounts";
+import AdminAccounts from "./admin/AdminAccounts/AdminAccounts";
+import AdminRoles from "./admin/AdminRoles/AdminRoles";
+import AdminPermissions from "./admin/AdminPermissions/AdminPermissions";
+import RoleProtected from "../common/RoleProtected/RoleProtected";
+import {ROLES_ADMIN} from "../../utils/roles";
 
 const panelTheme = createTheme({});
 
@@ -55,8 +66,12 @@ const Panel = (props) => {
 					<Switch>
 						<Route exact path={PATH_PANEL} component={() => <Redirect to={PATH_PANEL_PROFILE}/>}/>
 						<Route path={PATH_PANEL_PROFILE} component={() => <Profile/>}/>
-						<Route path={PATH_PANEL_ACCOUNTS} component={() => <Accounts/>}/>
-						<Route path={PATH_PANEL_OPTIONS} component={() => <Options/>}/>
+						<RoleProtected role={ROLES_ADMIN}>
+							<Route path={PATH_PANEL_ADMIN_ACCOUNTS} component={() => <AdminAccounts/>}/>
+							<Route path={PATH_PANEL_ADMIN_ROLES} component={() => <AdminRoles/>}/>
+							<Route path={PATH_PANEL_ADMIN_PERMISSIONS} component={() => <AdminPermissions/>}/>
+							<Route path={PATH_PANEL_ADMIN_OPTIONS} component={() => <AdminOptions/>}/>
+						</RoleProtected>
 					</Switch>
 				</Box>
 			</div>

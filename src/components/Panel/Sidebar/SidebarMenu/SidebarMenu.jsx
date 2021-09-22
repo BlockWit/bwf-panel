@@ -1,8 +1,6 @@
 import {Divider, List} from "@material-ui/core";
 import React from "react";
-import {AccountCircle, PeopleAlt, Settings} from "@material-ui/icons";
 import {makeStyles} from "@material-ui/core/styles";
-import {PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../../../config/urlsConfig";
 import SidebarMenuItem from "./SidebarMenuItem/SidebarMenuItem";
 import ExpandableSidebarMenuItem from "./ExpandableSidebarMenuItem/ExpandableSidebarMenuItem";
 

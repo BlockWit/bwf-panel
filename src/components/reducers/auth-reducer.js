@@ -1,11 +1,14 @@
 import {isTokenInStorage, removeTokenFromStorage, setTokenToStorage} from '../../utils/auth/storageTokenOperations';
 import {AUTH_FAILURE, AUTH_LOGOUT, AUTH_STARTED, AUTH_SUCCESS} from "../../actions/auth";
+import rolesFromJWT from "../../utils/rolesFromJWT";
+import rolesFromJWTStorage from "../../utils/rolesFromJWTStorage";
 
 let initialState = {
 	authenticated: isTokenInStorage(),
 	error: null,
 	loading: false,
-	fail: false
+	fail: false,
+	roles: rolesFromJWTStorage()
 };
 
 const authReducer = (state = initialState, action) => {
@@ -16,16 +19,20 @@ const authReducer = (state = initialState, action) => {
 			authenticated: false,
 			loading: true,
 			error: null,
-			fail: false
+			fail: false,
+			roles: []
 		};
 	} else if (action.type === AUTH_SUCCESS) {
+		const token = action.payload.token;
 		setTokenToStorage(action.payload.token);
+		const roles = rolesFromJWT(token);
 		return {
 			...state,
 			authenticated: true,
 			loading: false,
 			error: null,
-			fail: false
+			fail: false,
+			roles: roles
 		};
 	} else if (action.type === AUTH_FAILURE) {
 		return {
@@ -33,7 +40,8 @@ const authReducer = (state = initialState, action) => {
 			authenticated: false,
 			loading: false,
 			error: action.payload.statusText,
-			fail: true
+			fail: true,
+			roles: []
 		};
 	} else if (action.type === AUTH_LOGOUT) {
 		removeTokenFromStorage();
@@ -42,7 +50,8 @@ const authReducer = (state = initialState, action) => {
 			authenticated: false,
 			loading: false,
 			error: null,
-			fail: false
+			fail: false,
+			roles: []
 		};
 	}
 	return state;
