@@ -1,39 +1,14 @@
-import {Divider, List, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
+import {Divider, List} from "@material-ui/core";
 import React from "react";
 import {AccountCircle, PeopleAlt, Settings} from "@material-ui/icons";
 import {makeStyles} from "@material-ui/core/styles";
 import {PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../../../config/urlsConfig";
-import {NavLink} from "react-router-dom";
+import SidebarMenuItem from "./SidebarMenuItem/SidebarMenuItem";
+import ExpandableSidebarMenuItem from "./ExpandableSidebarMenuItem/ExpandableSidebarMenuItem";
 
 export const MT_DIVIDER = "MT_DIVIDER";
 export const MT_ITEM = "MT_ITEM";
-
-
-// root: {
-// 	"&$selected": {
-// 		backgroundColor: "red",
-// 			color: "white",
-// 			"& .MuiListItemIcon-root": {
-// 			color: "white"
-// 		}
-// 	},
-// 	"&$selected:hover": {
-// 		backgroundColor: "purple",
-// 			color: "white",
-// 			"& .MuiListItemIcon-root": {
-// 			color: "white"
-// 		}
-// 	},
-// 	"&:hover": {
-// 		backgroundColor: "blue",
-// 			color: "white",
-// 			"& .MuiListItemIcon-root": {
-// 			color: "white"
-// 		}
-// 	}
-// },
-// selected: {}
-
+export const MT_EXPANDABLE_ITEM = "MT_EXPANDABLE_ITEM";
 
 const useStyles = makeStyles((theme) => ({
 	divider: {
@@ -69,47 +44,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const SidebarMenu = () => {
+const SidebarMenu = ({menu}) => {
 	const classes = useStyles();
-
-	const menu = [
-		{
-			"type": MT_ITEM,
-			"icon": <AccountCircle className={classes.iconColor}/>,
-			"name": "Profile",
-			"link": PATH_PANEL_PROFILE
-		},
-		{
-			"type": MT_DIVIDER,
-		},
-		{
-			"type": MT_ITEM,
-			"icon": <PeopleAlt className={classes.iconColor}/>,
-			"name": "Accounts",
-			"link": PATH_PANEL_ACCOUNTS
-		},
-		{
-			"type": MT_ITEM,
-			"icon": <Settings className={classes.iconColor}/>,
-			"name": "Options",
-			"link": PATH_PANEL_OPTIONS
-		}
-	]
 
 	return (
 		<List className={classes.menuContainer}>
 			{menu.map((item, index) => {
 				if (item.type === MT_ITEM) {
-					return (
-						<div className={classes.menuItemContainer} key={index}>
-							<ListItem button component={NavLink} to={item.link}
-												activeClassName={classes.listItemActive}
-												className={classes.listItem}>
-								<ListItemIcon className={classes.listItemIcon}>{item.icon}</ListItemIcon>
-								<ListItemText primary={item.name}/>
-							</ListItem>
-						</div>
-					);
+					return <SidebarMenuItem key={index} index={index} item={item}/>
+				} else if (item.type === MT_EXPANDABLE_ITEM) {
+					return <ExpandableSidebarMenuItem key={index} index={index} item={item}/>
 				} else if (item.type === MT_DIVIDER) {
 					return <Divider className={classes.divider} key={index}/>
 				} else {

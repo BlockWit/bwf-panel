@@ -5,7 +5,7 @@ import {Redirect, Route, Switch} from "react-router-dom";
 import Profile from "./Profile/Profile";
 import Options from "./Options/Options";
 import {PATH_PANEL, PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../config/urlsConfig";
-import {createTheme, CssBaseline, MuiThemeProvider} from "@material-ui/core";
+import {createTheme, CssBaseline, ListItemText, MuiThemeProvider} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "./common/Box/Box";
 import Accounts from "./Accounts/Accounts";

@@ -1,10 +1,11 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {Divider, Drawer, Typography} from "@material-ui/core";
+import {Divider, Drawer, ListItemText, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {drawerWidth} from "../Panel";
-import {PATH_FRONT} from "../../../config/urlsConfig";
-import SidebarMenu from "./SidebarMenu/SidebarMenu";
+import {PATH_FRONT, PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../../config/urlsConfig";
+import SidebarMenu, {MT_DIVIDER, MT_EXPANDABLE_ITEM, MT_ITEM} from "./SidebarMenu/SidebarMenu";
+import {AccountCircle, PeopleAlt, Settings} from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
 	drawer: {
@@ -17,6 +18,9 @@ const useStyles = makeStyles((theme) => ({
 		background: "#212529",
 
 		//background: "#4f5962",
+		color: "#AAAAAA"
+	},
+	iconColor: {
 		color: "#CCCCCC"
 	},
 	toolbar: {
@@ -43,6 +47,45 @@ const useStyles = makeStyles((theme) => ({
 const Sidebar = ({open}) => {
 	const classes = useStyles();
 
+	const menu = [
+		{
+			"type": MT_ITEM,
+			"icon": <AccountCircle className={classes.iconColor}/>,
+			"name": "profile",
+			"link": PATH_PANEL_PROFILE
+		},
+		// {
+		// 	"type": MT_ITEM,
+		// 	"icon": <AccountCircle className={classes.iconColor}/>,
+		// 	"name": "posts",
+		// 	"link": PATH_PANEL_PROFILE
+		// },
+		{
+			"type": MT_DIVIDER,
+		},
+		{
+			"type": MT_DIVIDER,
+		},
+		{
+			"type": MT_EXPANDABLE_ITEM,
+			"name": "administration",
+			"children": [
+				{
+					"type": MT_ITEM,
+					"icon": <PeopleAlt className={classes.iconColor}/>,
+					"name": "accounts",
+					"link": PATH_PANEL_ACCOUNTS
+				},
+				{
+					"type": MT_ITEM,
+					"icon": <Settings className={classes.iconColor}/>,
+					"name": "options",
+					"link": PATH_PANEL_OPTIONS
+				}
+			]
+		}
+	]
+
 	return (
 		<Drawer variant="persistent"
 						anchor="left"
@@ -59,7 +102,7 @@ const Sidebar = ({open}) => {
 				<Typography variant='h6' className={classes.brandName}>BLOCKWIT</Typography>
 			</div>
 			<Divider className={classes.divider}/>
-			<SidebarMenu/>
+			<SidebarMenu menu={menu}/>
 		</Drawer>
 	);
 }
