@@ -1,6 +1,6 @@
 import {Divider, List, ListItem, ListItemIcon, ListItemText} from "@material-ui/core";
 import React from "react";
-import {AccountCircle} from "@material-ui/icons";
+import {AccountCircle, PeopleAlt, Settings} from "@material-ui/icons";
 import {makeStyles} from "@material-ui/core/styles";
 import {PATH_PANEL_ACCOUNTS, PATH_PANEL_OPTIONS, PATH_PANEL_PROFILE} from "../../../../config/urlsConfig";
 import {NavLink} from "react-router-dom";
@@ -84,13 +84,13 @@ const SidebarMenu = () => {
 		},
 		{
 			"type": MT_ITEM,
-			"icon": <AccountCircle className={classes.iconColor}/>,
+			"icon": <PeopleAlt className={classes.iconColor}/>,
 			"name": "Accounts",
 			"link": PATH_PANEL_ACCOUNTS
 		},
 		{
 			"type": MT_ITEM,
-			"icon": <AccountCircle className={classes.iconColor}/>,
+			"icon": <Settings className={classes.iconColor}/>,
 			"name": "Options",
 			"link": PATH_PANEL_OPTIONS
 		}
