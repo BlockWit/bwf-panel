@@ -47,7 +47,7 @@ const usePerformPageableQueryComponent = (fetch, render) => {
 		},
 		setPageSize: (event, newPageSize) => {
 			setPageSize(newPageSize);
-			pushHistory(data.page, newPageSize);
+			pushHistory(1 /* different cases , sometimes we have no elements*/, newPageSize);
 		},
 	});
 

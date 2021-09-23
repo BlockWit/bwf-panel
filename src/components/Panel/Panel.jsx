@@ -18,7 +18,7 @@ import {createTheme, CssBaseline, MuiThemeProvider} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import Box from "./common/Box/Box";
 import AdminAccounts from "./admin/AdminAccounts/AdminAccounts";
-import AdminPosts from "./admin/AdminRoles/AdminPosts";
+import AdminPosts from "./admin/AdminPosts/AdminPosts";
 import AdminPermissions from "./admin/AdminPermissions/AdminPermissions";
 import RoleProtected from "../common/RoleProtected/RoleProtected";
 import {ROLES_ADMIN} from "../../utils/roles";
