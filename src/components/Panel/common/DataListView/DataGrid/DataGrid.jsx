@@ -1,5 +1,7 @@
 import React from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import exists from "../../../../../utils/exist";
+import notExists from "../../../../../utils/notExist";
 
 const useStyles = makeStyles((theme) => ({
 	dataContainer: {
@@ -11,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
 		display: "flex",
 		flexWrap: "wrap",
 		justifyContent: "space-between",
-		padding: "12px",
+		padding: "16px",
 		borderBottom: "1px solid #e0e0e0"
 	},
 	dataContainerRowBody: {
@@ -25,36 +27,109 @@ const useStyles = makeStyles((theme) => ({
 	},
 	dataContainerRowHeader: {
 		fontWeight: "bold"
-	}
+	},
+	dataContainerCell: {}
 }));
 
-const DataGrid = ({items}) => {
+const TRIM_THRESHOLD = 100;
+
+
+const getCustom = (options, name) => {
+	if (exists(options)) {
+		const custom = options.custom;
+		if (exists(custom)) {
+			return custom[name];
+		}
+	}
+}
+
+const getCustomStylesFromCustom = fieldOptions => {
+	if (exists(fieldOptions)) {
+		const style = fieldOptions.styles;
+		if (exists(style)) {
+			return style;
+		}
+	}
+}
+
+const trimValue = (fieldOptions, value) => {
+	if (notExists(value) || value.length === 0)
+		return value;
+
+	let actualTrimCount = TRIM_THRESHOLD;
+
+	if (exists(fieldOptions)) {
+		const trimSymbolsCount = fieldOptions.trim;
+		if (exists(trimSymbolsCount)) {
+			if (trimSymbolsCount < actualTrimCount)
+				actualTrimCount = trimSymbolsCount;
+		}
+	}
+
+	if (value.length < actualTrimCount)
+		return value;
+
+	return value.substring(0, actualTrimCount) + "...";
+}
+
+const getCustomWrapper = fieldOptions => {
+	if (exists(fieldOptions)) {
+		return fieldOptions.customWrapper;
+	}
+}
+
+const getCustomTitle = fieldOptions => {
+	if (exists(fieldOptions)) {
+		return fieldOptions.title;
+	}
+}
+
+// const getCustomStyles = name => getCustomStylesFromCustom(getCustom(name))
+
+const performWidth = length => ({width: 100 / length + "%"});
+
+
+const DataGrid = ({items, options}) => {
 
 	const classes = useStyles();
 
 	const columnNames = Object.keys(items[0]);
 
-	const performWidth = length => ({width: 100 / length + "%"});
 
 	return (
 		<>
 			<div className={classes.dataContainer}>
 				<div className={classes.dataContainerRow + '  ' + classes.dataContainerRowHeader}>
-					{columnNames.map((colName, colNameIndex) =>
-						<div className={classes.dataContainerCell}
-								 style={performWidth(columnNames.length)}
-								 key={colNameIndex}>{colName}</div>
-					)}
+					{columnNames.map((colName, colNameIndex) => {
+
+						const custom = getCustom(options, colName);
+						const value = trimValue(custom, colName);
+						const customStyle = getCustomStylesFromCustom(custom);
+						const customTitle = getCustomTitle(custom);
+
+						return (
+							<div className={classes.dataContainerCell}
+									 style={customStyle ? customStyle : performWidth(columnNames.length)}
+									 key={colNameIndex}>{customTitle ? customTitle : value}</div>
+						);
+					})}
 				</div>
 				{items.map((item, itemIndex) =>
 					<div
 						className={classes.dataContainerRow + '  ' + classes.dataContainerRowBody + ' ' + (items.length === (itemIndex + 1) ? classes.dataContainerRowBodyLast : '')}
 						key={itemIndex}>
-						{Object.entries(item).map(([colName, colValue], index) =>
-							<div className={classes.dataContainerCell}
-									 style={performWidth(columnNames.length)}
-									 key={colName}>{colValue ? colValue.toString() : ''}</div>
-						)}
+						{Object.entries(item).map(([colName, colValue], index) => {
+
+							const custom = getCustom(options, colName);
+							const colValueString = colValue ? colValue.toString() : '';
+							const value = trimValue(custom, colValueString);
+							const customStyle = getCustomStylesFromCustom(custom);
+							const customWrapper = getCustomWrapper(custom);
+
+							return <div className={classes.dataContainerCell}
+													style={customStyle ? customStyle : performWidth(columnNames.length)}
+													key={colName}>{exists(customWrapper) ? customWrapper(value) : value}</div>
+						})}
 					</div>
 				)}
 			</div>

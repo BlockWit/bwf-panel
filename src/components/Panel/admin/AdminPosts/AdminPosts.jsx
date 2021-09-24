@@ -1,18 +1,14 @@
 import React from "react";
+import SingleFetchDataListView from "../../common/SingleFetchDataListView/SingleFetchDataListView";
 import useFetchAdminPosts from "../../../../hooks/useFetchAdminPosts";
-import usePerformPageableQueryComponent from "../../../../hooks/common/usePerformPageableQueryComponent";
-import DataListView from "../../common/DataListView/DataListView";
+import stdDate from "../../../../utils/stdDate";
+import PostStatus from "../../common/posts/PostStatus/PostStatus";
+import PostType from "../../common/posts/PostType/PostType";
 
 const AdminPosts = (props) => {
-	return usePerformPageableQueryComponent(useFetchAdminPosts, ({
-																																 data,
-																																 setPageNumber,
-																																 setPageSize
-																															 }) => {
 
-		const {pagesCount, pageSize, page} = data;
-
-		const items = data.items.map((item, index) => ({
+	const itemsMapper = (data) =>
+		data.items.map((item, index) => ({
 			"id": item.id,
 			"owner": item.owner.login,
 			"title": item.title,
@@ -21,13 +17,32 @@ const AdminPosts = (props) => {
 			"postType": item.postType
 		}));
 
-		return <DataListView items={items}
-												 pagesCount={pagesCount}
-												 pagesSize={pageSize}
-												 page={page}
-												 setPageNumber={setPageNumber}
-												 setPageSize={setPageSize}/>
-	});
+	const options = {
+		custom: {
+			id: {
+				styles: {
+					width: "10px"
+				}
+			},
+			title: {
+				trim: 10
+			},
+			postStatus: {
+				title: "status",
+				customWrapper: (value) => <PostStatus value={value}/>
+			},
+			postType: {
+				title: "type",
+				customWrapper: (value) => <PostType value={value}/>
+			},
+			created: {
+				customWrapper: stdDate
+			}
+		}
+	}
+
+	return <SingleFetchDataListView fetch={useFetchAdminPosts} itemsMapper={itemsMapper} options={options}/>
+
 }
 
 export default AdminPosts;

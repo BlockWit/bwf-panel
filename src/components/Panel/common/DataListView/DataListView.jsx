@@ -10,7 +10,8 @@ const DataListView = ({
 												pagesSize,
 												page,
 												setPageNumber,
-												setPageSize
+												setPageSize,
+												options
 											}) => {
 
 	if (arrayEmpty(items))
@@ -26,7 +27,7 @@ const DataListView = ({
 														setPageNumber={setPageNumber}/>
 			</Grid>
 			<Grid container item xs={12}>
-				<DataGrid items={items}/>
+				<DataGrid items={items} options={options}/>
 			</Grid>
 		</>
 	);
