@@ -23,8 +23,15 @@ import AdminPermissions from "./admin/AdminPermissions/AdminPermissions";
 import RoleProtected from "../common/RoleProtected/RoleProtected";
 import {ROLES_ADMIN} from "../../utils/roles";
 import AdminMedia from "./admin/AdminMedia/AdminMedia";
+import AdminRoles from "./admin/AdminRoles/AdminRoles";
 
-const panelTheme = createTheme({});
+const panelTheme = createTheme({
+	palette: {
+		success: {
+			main: "#bac778",
+		},
+	},
+});
 
 export const drawerWidth = 240;
 
@@ -73,7 +80,7 @@ const Panel = (props) => {
 							<Route path={PATH_PANEL_ADMIN_MEDIA} component={() => <AdminMedia/>}/>
 							<Route path={PATH_PANEL_ADMIN_POSTS} component={() => <AdminPosts/>}/>
 							<Route path={PATH_PANEL_ADMIN_ACCOUNTS} component={() => <AdminAccounts/>}/>
-							<Route path={PATH_PANEL_ADMIN_ROLES} component={() => <AdminPosts/>}/>
+							<Route path={PATH_PANEL_ADMIN_ROLES} component={() => <AdminRoles/>}/>
 							<Route path={PATH_PANEL_ADMIN_PERMISSIONS} component={() => <AdminPermissions/>}/>
 							<Route path={PATH_PANEL_ADMIN_OPTIONS} component={() => <AdminOptions/>}/>
 						</RoleProtected>

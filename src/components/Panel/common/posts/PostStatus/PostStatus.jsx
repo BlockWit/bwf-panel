@@ -8,7 +8,7 @@ const PS_DRAFT = "DRAFT";
 const PostStatus = ({value}) => {
 
 	if (value === PS_PUBLISHED)
-		return <Chip color="primary" size="small" variant="outlined" icon={<Done/>} label="published"/>
+		return <Chip color="primary" size="small" variant="outlined" icon={<Done/>} label="published" style={{color: "green", borderColor: "green"}}/>
 	if (value === PS_DRAFT)
 		return <Chip size="small" variant="outlined" icon={<Done/>} label="published"/>
 
