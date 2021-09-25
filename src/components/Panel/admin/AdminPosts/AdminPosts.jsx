@@ -24,19 +24,36 @@ const AdminPosts = (props) => {
 					width: "10px"
 				}
 			},
+			owner: {
+				styles: {
+					width: "10%"
+				}
+			},
 			title: {
-				trim: 10
+				trim: 100,
+				styles: {
+					width: "50%"
+				}
 			},
 			postStatus: {
 				title: "status",
+				styles: {
+					width: "10%"
+				},
 				customWrapper: (value) => <PostStatus value={value}/>
 			},
 			postType: {
 				title: "type",
+				styles: {
+					width: "10%"
+				},
 				customWrapper: (value) => <PostType value={value}/>
 			},
 			created: {
-				customWrapper: stdDate
+				customWrapper: stdDate,
+				styles: {
+					width: "10%"
+				}
 			}
 		}
 	}
