@@ -15,7 +15,7 @@ const SingleFetchDataListView = ({
 
 		const {pagesCount, pageSize, page} = data;
 
-		return <DataListView items={itemsMapper(data)}
+		return <DataListView items={itemsMapper ? itemsMapper(data) : data.items}
 												 pagesCount={pagesCount}
 												 pagesSize={pageSize}
 												 page={page}

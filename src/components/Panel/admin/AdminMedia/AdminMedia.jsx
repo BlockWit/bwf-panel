@@ -1,28 +1,20 @@
 import React from "react";
-import styles from './AdminMedia.module.css';
-import PaginationDataGrid from "../../../common/PaginationDataGrid/PaginationDataGrid";
 import useFetchAdminMedia from "../../../../hooks/useFetchAdminMedia";
+import SingleFetchDataListView from "../../common/SingleFetchDataListView/SingleFetchDataListView";
 
 
 const AdminMedia = (props) => {
 
-	const prepareItems = (items) => ({
-		header: [
-			{name: "id", styles: styles.roles__header_col_id},
-			{name: "owner", styles: styles.roles__header_col_id},
-			{name: "mediaType", styles: styles.roles__header_col_id},
-			{name: "path", styles: styles.roles__header_col_id}
-		],
-		body: [
-			{name: "id", styles: styles.roles__body_col_id},
-			{name: "owner", styles: styles.roles__body_col_id},
-			{name: "mediaType", styles: styles.roles__header_col_id},
-			{name: "path", styles: styles.roles__header_col_id}
-		],
-		data: items.map(t => [t.id, t.owner.login, t.mediaType, t.path])
-	});
+	const itemsMapper = (data) =>
+		data.items.map((item, index) => ({
+			"id": item.id,
+			"owner": item.owner.login,
+			"mediaType": item.mediaType,
+			"path": item.path
+		}));
 
-	return <PaginationDataGrid dataFetcher={useFetchAdminMedia} itemsPerformer={prepareItems}/>;
+	return <SingleFetchDataListView fetch={useFetchAdminMedia} itemsMapper={itemsMapper}/>
+
 
 }
 
