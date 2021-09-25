@@ -28,7 +28,9 @@ const useStyles = makeStyles((theme) => ({
 	dataContainerRowHeader: {
 		fontWeight: "bold"
 	},
-	dataContainerCell: {}
+	dataContainerCell: {
+		display: "flex"
+	}
 }));
 
 const TRIM_THRESHOLD = 100;
@@ -45,10 +47,13 @@ const getCustom = (options, name) => {
 
 const getCustomStylesFromCustom = fieldOptions => {
 	if (exists(fieldOptions)) {
-		const style = fieldOptions.styles;
-		if (exists(style)) {
-			return style;
-		}
+		return fieldOptions.styles;
+	}
+}
+
+const getCustomHeaderStylesFromCustom = fieldOptions => {
+	if (exists(fieldOptions)) {
+		return fieldOptions.titleStyles;
 	}
 }
 
@@ -106,10 +111,12 @@ const DataGrid = ({items, options}) => {
 						const value = trimValue(custom, colName);
 						const customStyle = getCustomStylesFromCustom(custom);
 						const customTitle = getCustomTitle(custom);
+						const customTitleStyle = getCustomHeaderStylesFromCustom(custom);
 
 						return (
 							<div className={classes.dataContainerCell}
-									 style={customStyle ? customStyle : performWidth(columnNames.length)}
+									 style={{...(customStyle ? customStyle : performWidth(columnNames.length)), ...(customTitleStyle ? customTitleStyle : {})}}
+									 // style={(customStyle ? customStyle : performWidth(columnNames.length)) + ' ' + (customTitleStyle ? customTitleStyle : '')}
 									 key={colNameIndex}>{customTitle ? customTitle : value}</div>
 						);
 					})}

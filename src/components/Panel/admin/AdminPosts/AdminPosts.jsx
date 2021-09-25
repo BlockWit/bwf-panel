@@ -21,7 +21,8 @@ const AdminPosts = (props) => {
 		custom: {
 			id: {
 				styles: {
-					width: "10px"
+					width: "10px",
+					justifyContent: "flex-end"
 				}
 			},
 			owner: {
@@ -38,21 +39,24 @@ const AdminPosts = (props) => {
 			postStatus: {
 				title: "status",
 				styles: {
-					width: "10%"
+					width: "10%",
+					justifyContent: "center"
 				},
 				customWrapper: (value) => <PostStatus value={value}/>
 			},
 			postType: {
 				title: "type",
 				styles: {
-					width: "10%"
+					width: "10%",
+					justifyContent: "center"
 				},
 				customWrapper: (value) => <PostType value={value}/>
 			},
 			created: {
 				customWrapper: stdDate,
 				styles: {
-					width: "10%"
+					width: "10%",
+					justifyContent: "center"
 				}
 			}
 		}
