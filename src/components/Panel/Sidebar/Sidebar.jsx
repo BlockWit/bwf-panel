@@ -7,6 +7,7 @@ import {
 	PATH_FRONT,
 	PATH_PANEL_ADMIN_ACCOUNTS,
 	PATH_PANEL_ADMIN_MEDIA,
+	PATH_PANEL_ADMIN_NOTIFICATIONS,
 	PATH_PANEL_ADMIN_OPTIONS,
 	PATH_PANEL_ADMIN_PERMISSIONS,
 	PATH_PANEL_ADMIN_POSTS,
@@ -14,7 +15,16 @@ import {
 	PATH_PANEL_PROFILE
 } from "../../../config/urlsConfig";
 import SidebarMenu, {MT_DIVIDER, MT_EXPANDABLE_ITEM, MT_ITEM} from "./SidebarMenu/SidebarMenu";
-import {AccountCircle, Description, Lock, PeopleAlt, PermMedia, Settings, VpnKey} from "@material-ui/icons";
+import {
+	AccountCircle,
+	Description,
+	Lock,
+	NotificationsActive,
+	PeopleAlt,
+	PermMedia,
+	Settings,
+	VpnKey
+} from "@material-ui/icons";
 import {useRoles} from "../../../hooks/useRoles";
 import {ROLES_ADMIN} from "../../../utils/roles";
 
@@ -125,6 +135,22 @@ const Sidebar = ({open}) => {
 						"icon": <Settings className={classes.iconColor}/>,
 						"name": "options",
 						"link": PATH_PANEL_ADMIN_OPTIONS
+					}
+				]
+			}
+		);
+		menu.push({"type": MT_DIVIDER});
+
+		menu.push(
+			{
+				"type": MT_EXPANDABLE_ITEM,
+				"name": "notifications",
+				"children": [
+					{
+						"type": MT_ITEM,
+						"icon": <NotificationsActive className={classes.iconColor}/>,
+						"name": "notifications",
+						"link": PATH_PANEL_ADMIN_NOTIFICATIONS
 					}
 				]
 			}

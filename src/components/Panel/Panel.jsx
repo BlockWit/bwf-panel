@@ -8,6 +8,7 @@ import {
 	PATH_PANEL,
 	PATH_PANEL_ADMIN_ACCOUNTS,
 	PATH_PANEL_ADMIN_MEDIA,
+	PATH_PANEL_ADMIN_NOTIFICATIONS,
 	PATH_PANEL_ADMIN_OPTIONS,
 	PATH_PANEL_ADMIN_PERMISSIONS,
 	PATH_PANEL_ADMIN_POSTS,
@@ -24,6 +25,7 @@ import RoleProtected from "../common/RoleProtected/RoleProtected";
 import {ROLES_ADMIN} from "../../utils/roles";
 import AdminMedia from "./admin/AdminMedia/AdminMedia";
 import AdminRoles from "./admin/AdminRoles/AdminRoles";
+import AdminNotifications from "./admin/notifications/AdminNotifications/AdminNotifications";
 
 const panelTheme = createTheme({
 	palette: {
@@ -83,6 +85,7 @@ const Panel = (props) => {
 							<Route path={PATH_PANEL_ADMIN_ROLES} component={() => <AdminRoles/>}/>
 							<Route path={PATH_PANEL_ADMIN_PERMISSIONS} component={() => <AdminPermissions/>}/>
 							<Route path={PATH_PANEL_ADMIN_OPTIONS} component={() => <AdminOptions/>}/>
+							<Route path={PATH_PANEL_ADMIN_NOTIFICATIONS} component={() => <AdminNotifications/>}/>
 						</RoleProtected>
 					</Switch>
 				</Box>
