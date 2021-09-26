@@ -128,7 +128,9 @@ const DataGrid = ({items, options}) => {
 						return (
 							<div className={classes.dataContainerCell}
 									 style={{...(customStyle ? customStyle : performWidth(columnNames.length)), ...(customTitleStyle ? customTitleStyle : {})}}
-									 key={colNameIndex}>{customTitle ? customTitle : value}</div>
+									 key={colNameIndex}>
+								{customTitle ? customTitle : value}
+							</div>
 						);
 					})}
 				</div>
@@ -150,7 +152,7 @@ const DataGrid = ({items, options}) => {
 								className={classes.dataContainerCell}
 								style={{...(customStyle ? customStyle : performWidth(columnNames.length)), ...(customBodyStyle ? customBodyStyle : {})}}
 								key={colName}
-								onClick={(e) => customActions.onClick(item, e)}
+								onClick={e => customActions.onClick(item, e)}
 							>
 								{exists(customWrapper) ? customWrapper(value) : value}
 							</div>

@@ -3,6 +3,7 @@ export const PATH_ROOT = '/';
 export const PATH_REL_PANEL = '/panel';
 export const PATH_REL_FRONT = '/front';
 
+export const PATH_REL_POST = '/post';
 export const PATH_REL_LOGIN = '/login';
 export const PATH_REL_LOGOUT = '/logout';
 export const PATH_REL_PROFILE = '/profile';
@@ -30,6 +31,8 @@ export const PATH_LOGOUT = PATH_REL_LOGOUT;
 export const PATH_FRONT = PATH_REL_FRONT;
 
 export const PATH_FRONT_LOGIN = PATH_FRONT + PATH_REL_LOGIN;
+export const PATH_FRONT_VIEW_POST = PATH_FRONT + PATH_REL_POSTS + PATH_REL_POST + "/:postId";
+
 export const PATH_FRONT_PROFILE = PATH_FRONT + PATH_REL_PROFILE;
 
 // PANEL
