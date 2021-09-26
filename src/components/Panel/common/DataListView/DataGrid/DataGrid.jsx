@@ -57,6 +57,12 @@ const getCustomHeaderStylesFromCustom = fieldOptions => {
 	}
 }
 
+const getCustomBodyStylesFromCustom = fieldOptions => {
+	if (exists(fieldOptions)) {
+		return fieldOptions.bodyStyles;
+	}
+}
+
 const trimValue = (fieldOptions, value) => {
 	if (notExists(value) || value.length === 0)
 		return value;
@@ -75,6 +81,12 @@ const trimValue = (fieldOptions, value) => {
 		return value;
 
 	return value.substring(0, actualTrimCount) + "...";
+}
+
+const getCustomActions = fieldOptions => {
+	if (exists(fieldOptions)) {
+		return exists(fieldOptions.actions) ? fieldOptions.actions : {};
+	}
 }
 
 const getCustomWrapper = fieldOptions => {
@@ -116,7 +128,6 @@ const DataGrid = ({items, options}) => {
 						return (
 							<div className={classes.dataContainerCell}
 									 style={{...(customStyle ? customStyle : performWidth(columnNames.length)), ...(customTitleStyle ? customTitleStyle : {})}}
-									 // style={(customStyle ? customStyle : performWidth(columnNames.length)) + ' ' + (customTitleStyle ? customTitleStyle : '')}
 									 key={colNameIndex}>{customTitle ? customTitle : value}</div>
 						);
 					})}
@@ -132,10 +143,17 @@ const DataGrid = ({items, options}) => {
 							const value = trimValue(custom, colValueString);
 							const customStyle = getCustomStylesFromCustom(custom);
 							const customWrapper = getCustomWrapper(custom);
+							const customActions = getCustomActions(custom);
+							const customBodyStyle = getCustomBodyStylesFromCustom(custom);
 
-							return <div className={classes.dataContainerCell}
-													style={customStyle ? customStyle : performWidth(columnNames.length)}
-													key={colName}>{exists(customWrapper) ? customWrapper(value) : value}</div>
+							return <div
+								className={classes.dataContainerCell}
+								style={{...(customStyle ? customStyle : performWidth(columnNames.length)), ...(customBodyStyle ? customBodyStyle : {})}}
+								key={colName}
+								onClick={(e) => customActions.onClick(item, e)}
+							>
+								{exists(customWrapper) ? customWrapper(value) : value}
+							</div>
 						})}
 					</div>
 				)}

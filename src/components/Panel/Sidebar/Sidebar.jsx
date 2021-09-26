@@ -40,8 +40,8 @@ const useStyles = makeStyles((theme) => ({
 	},
 	drawerPaper: {
 		width: drawerWidth,
-		background: "#212529",
-		//background: "linear-gradient(to top, #0c606d, #00032d)",
+		//background: "#212529",
+		background: "linear-gradient(to top, #0c606d, #00032d)",
 
 		//background: "#4f5962",
 		color: "#AAAAAA"

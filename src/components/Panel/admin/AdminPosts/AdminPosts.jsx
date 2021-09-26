@@ -34,6 +34,9 @@ const AdminPosts = (props) => {
 				trim: 100,
 				styles: {
 					width: "50%"
+				},
+				actions: {
+					onClick: (item, event) => console.log(item)
 				}
 			},
 			postStatus: {
