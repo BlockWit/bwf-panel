@@ -23,7 +23,7 @@ const Navbar = () => {
 	const classes = useStyles();
 
 	return (
-		<AppBar position="static" className={classes.appBar} elevation={3}>
+		<AppBar position="fixed" className={classes.appBar} elevation={3}>
 			<Container>
 				<Toolbar>
 					<NavLink to={PATH_FRONT}>

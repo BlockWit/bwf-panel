@@ -4,8 +4,12 @@ import useFetchAdminPosts from "../../../../hooks/admin/useFetchAdminPosts";
 import stdDate from "../../../../utils/stdDate";
 import PostStatus from "../../common/posts/PostStatus/PostStatus";
 import PostType from "../../common/posts/PostType/PostType";
+import {useHistory} from "react-router-dom";
+import {PATH_FRONT_VIEW_POST_} from "../../../../config/urlsConfig";
 
 const AdminPosts = (props) => {
+
+	const history = useHistory();
 
 	const itemsMapper = (data) =>
 		data.items.map((item, index) => ({
@@ -36,7 +40,7 @@ const AdminPosts = (props) => {
 					width: "50%"
 				},
 				actions: {
-					onClick: (item, event) => console.log(item)
+					onClick: item => history.push(PATH_FRONT_VIEW_POST_ + item.id)
 				}
 			},
 			postStatus: {
