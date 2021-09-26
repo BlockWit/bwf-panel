@@ -1,5 +1,5 @@
-import {API_ADMIN_ACCOUNTS} from "../config/apiConfig";
-import useFetchAuthQuery from "./common/useFetchAuthQuery";
+import {API_ADMIN_ACCOUNTS} from "../../config/apiConfig";
+import useFetchAuthQuery from "../common/useFetchAuthQuery";
 
 export const DK_ADMIN_ACCOUNTS = "admin.accounts";
 

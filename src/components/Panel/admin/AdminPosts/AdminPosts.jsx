@@ -1,6 +1,6 @@
 import React from "react";
 import SingleFetchDataListView from "../../common/SingleFetchDataListView/SingleFetchDataListView";
-import useFetchAdminPosts from "../../../../hooks/useFetchAdminPosts";
+import useFetchAdminPosts from "../../../../hooks/admin/useFetchAdminPosts";
 import stdDate from "../../../../utils/stdDate";
 import PostStatus from "../../common/posts/PostStatus/PostStatus";
 import PostType from "../../common/posts/PostType/PostType";

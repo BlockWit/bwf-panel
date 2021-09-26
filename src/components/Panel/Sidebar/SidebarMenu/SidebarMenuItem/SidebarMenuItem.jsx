@@ -11,7 +11,9 @@ const useStyles = makeStyles((theme) => ({
 		color: "#CCCCCC"
 	},
 	listItem: {
-		//borderRadius: "5px",
+		// marginTop: "4px",
+		// marginBottom: "4px",
+		borderRadius: "5px",
 		"&:hover": {
 			backgroundColor: "#333333",
 			color: "#DDDDDD",
@@ -28,7 +30,10 @@ const useStyles = makeStyles((theme) => ({
 		minWidth: '40px'
 	},
 	menuItemContainer: {
-		//margin: "5px"
+		marginTop: "2px",
+		marginBottom: "2px",
+		marginLeft: "5px",
+		marginRight: "5px"
 	},
 	menuContainer: {
 		paddingTop: "0px",
@@ -42,7 +47,9 @@ const SidebarMenuItem = ({index, item}) => {
 
 	return (
 		<div className={classes.menuItemContainer} key={index}>
-			<ListItem button component={NavLink} to={item.link}
+			<ListItem button component={NavLink}
+								to={item.link}
+								exact
 								activeClassName={classes.listItemActive}
 								className={classes.listItem}>
 				<ListItemIcon className={classes.listItemIcon}>{item.icon}</ListItemIcon>

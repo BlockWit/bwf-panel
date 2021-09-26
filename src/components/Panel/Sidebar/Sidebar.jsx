@@ -8,6 +8,10 @@ import {
 	PATH_PANEL_ADMIN_ACCOUNTS,
 	PATH_PANEL_ADMIN_MEDIA,
 	PATH_PANEL_ADMIN_NOTIFICATIONS,
+	PATH_PANEL_ADMIN_NOTIFICATIONS_ASSIGNS,
+	PATH_PANEL_ADMIN_NOTIFICATIONS_EXEC_STATES,
+	PATH_PANEL_ADMIN_NOTIFICATIONS_EXECUTORS,
+	PATH_PANEL_ADMIN_NOTIFICATIONS_TYPES,
 	PATH_PANEL_ADMIN_OPTIONS,
 	PATH_PANEL_ADMIN_PERMISSIONS,
 	PATH_PANEL_ADMIN_POSTS,
@@ -37,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 	drawerPaper: {
 		width: drawerWidth,
 		background: "#212529",
+		//background: "linear-gradient(to top, #0c606d, #00032d)",
 
 		//background: "#4f5962",
 		color: "#AAAAAA"
@@ -151,6 +156,30 @@ const Sidebar = ({open}) => {
 						"icon": <NotificationsActive className={classes.iconColor}/>,
 						"name": "notifications",
 						"link": PATH_PANEL_ADMIN_NOTIFICATIONS
+					},
+					{
+						"type": MT_ITEM,
+						"icon": <NotificationsActive className={classes.iconColor}/>,
+						"name": "notification exec states",
+						"link": PATH_PANEL_ADMIN_NOTIFICATIONS_EXEC_STATES
+					},
+					{
+						"type": MT_ITEM,
+						"icon": <NotificationsActive className={classes.iconColor}/>,
+						"name": "notification types",
+						"link": PATH_PANEL_ADMIN_NOTIFICATIONS_TYPES
+					},
+					{
+						"type": MT_ITEM,
+						"icon": <NotificationsActive className={classes.iconColor}/>,
+						"name": "executors",
+						"link": PATH_PANEL_ADMIN_NOTIFICATIONS_EXECUTORS
+					},
+					{
+						"type": MT_ITEM,
+						"icon": <NotificationsActive className={classes.iconColor}/>,
+						"name": "assigns",
+						"link": PATH_PANEL_ADMIN_NOTIFICATIONS_ASSIGNS
 					}
 				]
 			}

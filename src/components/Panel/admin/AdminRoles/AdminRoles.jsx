@@ -1,5 +1,5 @@
 import React from "react";
-import useFetchAdminRoles from "../../../../hooks/useFetchAdminRoles";
+import useFetchAdminRoles from "../../../../hooks/admin/useFetchAdminRoles";
 import SingleFetchDataListView from "../../common/SingleFetchDataListView/SingleFetchDataListView";
 
 

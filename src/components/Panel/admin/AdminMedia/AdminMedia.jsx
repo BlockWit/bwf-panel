@@ -1,5 +1,5 @@
 import React from "react";
-import useFetchAdminMedia from "../../../../hooks/useFetchAdminMedia";
+import useFetchAdminMedia from "../../../../hooks/admin/useFetchAdminMedia";
 import SingleFetchDataListView from "../../common/SingleFetchDataListView/SingleFetchDataListView";
 
 

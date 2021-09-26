@@ -1,5 +1,5 @@
 import React from "react";
-import useFetchAdminNotifications from "../../../../../hooks/useFetchAdminNotifications";
+import useFetchAdminNotifications from "../../../../../hooks/admin/notifications/useFetchAdminNotifications";
 import SingleFetchDataListView from "../../../common/SingleFetchDataListView/SingleFetchDataListView";
 
 const AdminNotifications = (props) => {

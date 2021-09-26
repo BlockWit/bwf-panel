@@ -9,6 +9,10 @@ import {
 	PATH_PANEL_ADMIN_ACCOUNTS,
 	PATH_PANEL_ADMIN_MEDIA,
 	PATH_PANEL_ADMIN_NOTIFICATIONS,
+	PATH_PANEL_ADMIN_NOTIFICATIONS_ASSIGNS,
+	PATH_PANEL_ADMIN_NOTIFICATIONS_EXEC_STATES,
+	PATH_PANEL_ADMIN_NOTIFICATIONS_EXECUTORS,
+	PATH_PANEL_ADMIN_NOTIFICATIONS_TYPES,
 	PATH_PANEL_ADMIN_OPTIONS,
 	PATH_PANEL_ADMIN_PERMISSIONS,
 	PATH_PANEL_ADMIN_POSTS,
@@ -26,6 +30,11 @@ import {ROLES_ADMIN} from "../../utils/roles";
 import AdminMedia from "./admin/AdminMedia/AdminMedia";
 import AdminRoles from "./admin/AdminRoles/AdminRoles";
 import AdminNotifications from "./admin/notifications/AdminNotifications/AdminNotifications";
+import AdminNotificationsAssigns from "./admin/notifications/AdminNotificationsAssigns/AdminNotificationsAssigns";
+import AdminNotificationsExecutors from "./admin/notifications/AdminNotificationsExecutors/AdminNotificationsExecutors";
+import AdminNotificationsTypes from "./admin/notifications/AdminNotificationsTypes/AdminNotificationsTypes";
+import AdminNotificationsExecStates
+	from "./admin/notifications/AdminNotificationsExecStates/AdminNotificationsExecStates";
 
 const panelTheme = createTheme({
 	palette: {
@@ -77,15 +86,24 @@ const Panel = (props) => {
 				<Box>
 					<Switch>
 						<Route exact path={PATH_PANEL} component={() => <Redirect to={PATH_PANEL_PROFILE}/>}/>
-						<Route path={PATH_PANEL_PROFILE} component={() => <Profile/>}/>
+						<Route exact path={PATH_PANEL_PROFILE} component={() => <Profile/>}/>
 						<RoleProtected role={ROLES_ADMIN}>
-							<Route path={PATH_PANEL_ADMIN_MEDIA} component={() => <AdminMedia/>}/>
-							<Route path={PATH_PANEL_ADMIN_POSTS} component={() => <AdminPosts/>}/>
-							<Route path={PATH_PANEL_ADMIN_ACCOUNTS} component={() => <AdminAccounts/>}/>
-							<Route path={PATH_PANEL_ADMIN_ROLES} component={() => <AdminRoles/>}/>
-							<Route path={PATH_PANEL_ADMIN_PERMISSIONS} component={() => <AdminPermissions/>}/>
-							<Route path={PATH_PANEL_ADMIN_OPTIONS} component={() => <AdminOptions/>}/>
-							<Route path={PATH_PANEL_ADMIN_NOTIFICATIONS} component={() => <AdminNotifications/>}/>
+							<Route exact path={PATH_PANEL_ADMIN_MEDIA} component={() => <AdminMedia/>}/>
+							<Route exact path={PATH_PANEL_ADMIN_POSTS} component={() => <AdminPosts/>}/>
+
+							<Route exact path={PATH_PANEL_ADMIN_ACCOUNTS} component={() => <AdminAccounts/>}/>
+							<Route exact path={PATH_PANEL_ADMIN_ROLES} component={() => <AdminRoles/>}/>
+							<Route exact path={PATH_PANEL_ADMIN_PERMISSIONS} component={() => <AdminPermissions/>}/>
+							<Route exact path={PATH_PANEL_ADMIN_OPTIONS} component={() => <AdminOptions/>}/>
+
+							<Route exact path={PATH_PANEL_ADMIN_NOTIFICATIONS} component={() => <AdminNotifications/>}/>
+							<Route exact path={PATH_PANEL_ADMIN_NOTIFICATIONS_ASSIGNS}
+										 component={() => <AdminNotificationsAssigns/>}/>
+							<Route exact path={PATH_PANEL_ADMIN_NOTIFICATIONS_EXECUTORS}
+										 component={() => <AdminNotificationsExecutors/>}/>
+							<Route exact path={PATH_PANEL_ADMIN_NOTIFICATIONS_TYPES} component={() => <AdminNotificationsTypes/>}/>
+							<Route exact path={PATH_PANEL_ADMIN_NOTIFICATIONS_EXEC_STATES}
+										 component={() => <AdminNotificationsExecStates/>}/>
 						</RoleProtected>
 					</Switch>
 				</Box>

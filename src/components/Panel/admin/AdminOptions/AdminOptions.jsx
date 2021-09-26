@@ -1,5 +1,5 @@
 import React from "react";
-import useFetchAdminOptions from "../../../../hooks/useFetchAdminOptions";
+import useFetchAdminOptions from "../../../../hooks/admin/useFetchAdminOptions";
 import SingleFetchDataListView from "../../common/SingleFetchDataListView/SingleFetchDataListView";
 
 const AdminOptions = (props) => {

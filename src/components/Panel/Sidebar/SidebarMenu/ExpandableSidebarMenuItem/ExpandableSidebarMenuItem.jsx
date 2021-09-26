@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 		color: "#CCCCCC"
 	},
 	listItem: {
-		//borderRadius: "5px",
+		borderRadius: "5px",
 		"&:hover": {
 			backgroundColor: "#333333",
 			color: "#DDDDDD",
@@ -31,7 +31,10 @@ const useStyles = makeStyles((theme) => ({
 		minWidth: '40px'
 	},
 	menuItemContainer: {
-		//margin: "5px"
+		marginTop: "2px",
+		marginBottom: "2px",
+		marginLeft: "5px",
+		marginRight: "5px"
 	},
 	menuContainer: {
 		paddingTop: "0px",
@@ -77,7 +80,7 @@ const ExpandableSidebarMenuItem = ({index, item}) => {
 				</ListItem>
 			</div>
 			<Collapse in={open} timeout="auto" unmountOnExit key={index}>
-				<SidebarMenu menu={item.children}/>
+				<SidebarMenu menu={item.children} container="false"/>
 			</Collapse>
 		</React.Fragment>
 	);

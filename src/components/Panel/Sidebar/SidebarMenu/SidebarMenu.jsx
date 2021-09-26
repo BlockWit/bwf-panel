@@ -10,30 +10,9 @@ export const MT_EXPANDABLE_ITEM = "MT_EXPANDABLE_ITEM";
 
 const useStyles = makeStyles((theme) => ({
 	divider: {
-		background: "#464646"
-	},
-	iconColor: {
-		color: "#CCCCCC"
-	},
-	listItem: {
-		borderRadius: "5px",
-		"&:hover": {
-			backgroundColor: "#333333",
-			color: "#DDDDDD",
-			"& .MuiListItemIcon-root": {
-				color: "#666666"
-			}
-		}
-	},
-	listItemActive: {
-		background: '#444444',
-		color: '#EEEEEE'
-	},
-	listItemIcon: {
-		minWidth: '40px'
-	},
-	menuItemContainer: {
-		margin: "5px"
+		background: "#464646",
+		width: "95%",
+		margin: "auto"
 	},
 	menuContainer: {
 		paddingTop: "0px",
@@ -42,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const SidebarMenu = ({menu}) => {
+const SidebarMenu = ({menu, container = true}) => {
 	const classes = useStyles();
 
-	return (
-		<List className={classes.menuContainer}>
+	let menuView =
+		<>
 			{menu.map((item, index) => {
 				if (item.type === MT_ITEM) {
 					return <SidebarMenuItem key={index} index={index} item={item}/>
@@ -58,9 +37,16 @@ const SidebarMenu = ({menu}) => {
 					return <></>
 				}
 			})}
-		</List>
-	);
+		</>
 
+	if (container)
+		return (
+			<List className={classes.menuContainer}>
+				{menuView}
+			</List>
+		);
+
+	return menuView;
 }
 
 export default SidebarMenu;
