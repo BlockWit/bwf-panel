@@ -1,12 +1,12 @@
 import React from "react";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import NavbarMenu from "../../Front/Navbar/NavbarMenu/NavbarMenu";
 import {makeStyles} from "@material-ui/core/styles";
 import {drawerWidth} from "../Panel";
 import {IconButton} from "@material-ui/core";
 import MenuIcon from '@material-ui/icons/Menu';
 import clsx from "clsx";
+import NavbarMenu from "./NavbarMenu/NavbarMenu";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
