@@ -5,7 +5,13 @@ import useFrontFetchPost from "../../../hooks/front/useFrontFetchPost";
 import exist from "../../../utils/exist";
 
 const useStyles = makeStyles((theme) => ({
-	container: {},
+	container: {
+		'& a': {
+			textDecoration: "none",
+			cursor: "pointer",
+			color: "#072177"
+		}
+	},
 	containerArticle: {
 		maxWidth: "800px"
 	},
