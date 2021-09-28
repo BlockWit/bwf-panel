@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 	listItem: {
 		borderRadius: "5px",
 		"&:hover": {
-			backgroundColor: "#333333",
+			backgroundColor: "#62aeff2e",
 			color: "#DDDDDD",
 			"& .MuiListItemIcon-root": {
 				color: "#666666"
@@ -46,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
 	menuSubheader: {
 		textTransform: "uppercase",
 		fontWeight: "bold",
-		color: "#AAAAAA"
+		fontSize: "0.95em",
+		color: "#CCCCCC"
 	}
 }));
 

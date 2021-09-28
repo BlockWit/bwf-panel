@@ -13,9 +13,9 @@ const useStyles = makeStyles((theme) => ({
 	listItem: {
 		// marginTop: "4px",
 		// marginBottom: "4px",
-		borderRadius: "5px",
+		borderRadius: "6px",
 		"&:hover": {
-			backgroundColor: "#333333",
+			backgroundColor: "#62aeff2e",
 			color: "#DDDDDD",
 			"& .MuiListItemIcon-root": {
 				color: "#666666"
@@ -23,8 +23,8 @@ const useStyles = makeStyles((theme) => ({
 		}
 	},
 	listItemActive: {
-		background: '#444444',
-		color: '#EEEEEE'
+		background: '#62aeff4d',
+		color: '#FFFFFF'
 	},
 	listItemIcon: {
 		minWidth: '40px'

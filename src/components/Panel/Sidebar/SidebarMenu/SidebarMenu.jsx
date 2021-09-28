@@ -10,9 +10,11 @@ export const MT_EXPANDABLE_ITEM = "MT_EXPANDABLE_ITEM";
 
 const useStyles = makeStyles((theme) => ({
 	divider: {
-		background: "#464646",
+		//background: "#464646",
 		width: "95%",
-		margin: "auto"
+		margin: "auto",
+		//background: "linear-gradient(to right, rgba(60,84,113,0.08), rgba(60,84,113,0.95), rgba(60,84,113,0.08))"
+		background: "linear-gradient(to right, rgba(60,84,113,0.08), rgba(96,142,197,0.95), rgba(60,84,113,0.08))"
 	},
 	menuContainer: {
 		paddingTop: "0px",
