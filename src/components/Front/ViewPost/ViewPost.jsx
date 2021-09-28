@@ -1,5 +1,5 @@
 import React from "react";
-import {Container, Divider, makeStyles, Typography} from "@material-ui/core";
+import {Container, Divider, makeStyles} from "@material-ui/core";
 import usePerformSingleQueryComponent from "../../../hooks/common/usePerformSingleQueryComponent";
 import useFrontFetchPost from "../../../hooks/front/useFrontFetchPost";
 import exist from "../../../utils/exist";
@@ -63,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
-const POST_TYPE_PAGE = "PAGE";
+//const POST_TYPE_PAGE = "PAGE";
 const POST_TYPE_ARTICLE = "ARTICLE";
 
 const ViewPost = (props) => {

@@ -7,7 +7,14 @@ const useAuthQuery = (key, fn, params = null) => {
 	const [authRedirect, setAuthRedirect] = useState(false);
 	const extraKeys = params === null ? [] : Object.values(params);
 	const combinedKey = params === null ? key : [key, extraKeys];
-	const queryResult = useQuery(combinedKey, () => fn(setAuthRedirect), {fetchPolicy: 'cache-only'});
+	const queryResult = useQuery(combinedKey, () => fn(setAuthRedirect), {
+		// refetchInterval: 10000*60*10,
+		// refetchIntervalInBackground: 10000*60*10,
+		// refetchOnMount: false,
+		// refetchOnReconnect: false,
+		// refetchOnWindowFocus: false,
+
+	});
 	const dispatch = useDispatch();
 
 	useEffect(() => {
