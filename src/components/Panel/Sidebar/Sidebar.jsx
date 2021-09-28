@@ -4,7 +4,6 @@ import {Divider, Drawer, Typography} from "@material-ui/core";
 import {makeStyles} from "@material-ui/core/styles";
 import {drawerWidth} from "../Panel";
 import {
-	PATH_FRONT,
 	PATH_PANEL_ADMIN_ACCOUNTS,
 	PATH_PANEL_ADMIN_MEDIA,
 	PATH_PANEL_ADMIN_NOTIFICATIONS,
@@ -16,7 +15,8 @@ import {
 	PATH_PANEL_ADMIN_PERMISSIONS,
 	PATH_PANEL_ADMIN_POSTS,
 	PATH_PANEL_ADMIN_ROLES,
-	PATH_PANEL_PROFILE
+	PATH_PANEL_PROFILE,
+	PATH_ROOT
 } from "../../../config/urlsConfig";
 import SidebarMenu, {MT_DIVIDER, MT_EXPANDABLE_ITEM, MT_ITEM} from "./SidebarMenu/SidebarMenu";
 import {
@@ -197,7 +197,7 @@ const Sidebar = ({open}) => {
 						}}
 		>
 			<div className={classes.toolbar}>
-				<NavLink to={PATH_FRONT}>
+				<NavLink to={PATH_ROOT}>
 					<img src='/logo_light.png' alt='BlockWit' className={classes.sidebarLogo}/>
 				</NavLink>
 				<Typography variant='h6' className={classes.brandName}>BLOCKWIT</Typography>

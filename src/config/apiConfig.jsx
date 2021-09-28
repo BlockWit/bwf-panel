@@ -16,11 +16,13 @@ export const API_NOTIFY_TYPES_SUFFIX = "/notifytypes";
 export const API_ASSIGNS_SUFFIX = "/assigns";
 export const API_EXECUTORS_SUFFIX = "/executors";
 export const API_MENU_SUFFIX = "/menu";
+export const API_CONFIG_SUFFIX = "/config";
 
 export const API_PROFILE = API_PROFILE_SUFFIX;
 
 // Front
 export const API_FRONT_MENU = API_FRONT_SUFFIX + API_MENU_SUFFIX;
+export const API_FRONT_CONFIG = API_FRONT_SUFFIX + API_CONFIG_SUFFIX;
 export const API_FRONT_POSTS_POST_VIEW = API_FRONT_SUFFIX + API_POSTS_SUFFIX + API_POST_SUFFIX + '/';
 
 // Admin

@@ -2,6 +2,7 @@ import React from "react";
 import {Container, makeStyles} from "@material-ui/core";
 import usePerformSingleQueryComponent from "../../../hooks/common/usePerformSingleQueryComponent";
 import useFrontFetchPost from "../../../hooks/front/useFrontFetchPost";
+import exist from "../../../utils/exist";
 
 const useStyles = makeStyles((theme) => ({
 	container: {},
@@ -47,8 +48,10 @@ const useStyles = makeStyles((theme) => ({
 const ViewPost = (props) => {
 	const classes = useStyles();
 
+	const {postId} = props;
+
 	const useFetchTargetPost = (params) => {
-		return useFrontFetchPost({postId: props.match.params.postId})
+		return useFrontFetchPost({postId: exist(postId) ? postId : props.match.params.postId})
 	}
 
 	return usePerformSingleQueryComponent(useFetchTargetPost, data => {

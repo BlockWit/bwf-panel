@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import {Container} from "@material-ui/core";
 import NavbarMenu from "./NavbarMenu/NavbarMenu";
 import {NavLink} from "react-router-dom";
-import {PATH_FRONT} from "../../../config/urlsConfig";
+import {PATH_ROOT} from "../../../config/urlsConfig";
 
 const useStyles = makeStyles((theme) => ({
 	appBar: {
@@ -26,7 +26,7 @@ const Navbar = () => {
 		<AppBar position="fixed" className={classes.appBar} elevation={3}>
 			<Container>
 				<Toolbar>
-					<NavLink to={PATH_FRONT}>
+					<NavLink to={PATH_ROOT}>
 						<img src='https://blockwit.io/assets/images/logo.png' alt='BlockWit' className={classes.appBarLogo}/>
 					</NavLink>
 					<NavbarMenu/>

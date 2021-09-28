@@ -13,7 +13,7 @@ const App = (props) => {
 
 	return (
 		<Switch>
-			<Route exact path={PATH_ROOT} component={() => <Redirect to={PATH_FRONT}/>}/>
+			<Route exact path={PATH_ROOT} component={() => <Front/>}/>
 			<Route exact path={PATH_LOGOUT} component={() => <Logout/>}/>
 			<Route path={PATH_FRONT} component={() => <Front/>}/>
 			<Route path={PATH_FRONT_VIEW_POST} component={() => <Front/>}/>
