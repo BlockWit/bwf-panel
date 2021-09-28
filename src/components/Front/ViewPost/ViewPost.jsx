@@ -1,11 +1,14 @@
 import React from "react";
-import {Container, makeStyles} from "@material-ui/core";
+import {Container, Divider, makeStyles, Typography} from "@material-ui/core";
 import usePerformSingleQueryComponent from "../../../hooks/common/usePerformSingleQueryComponent";
 import useFrontFetchPost from "../../../hooks/front/useFrontFetchPost";
 import exist from "../../../utils/exist";
 
 const useStyles = makeStyles((theme) => ({
 	container: {},
+	containerArticle: {
+		maxWidth: "800px"
+	},
 	bsPostViewContent: {
 		overflowWrap: "break-word",
 		wordWrap: "break-word",
@@ -41,9 +44,21 @@ const useStyles = makeStyles((theme) => ({
 			margin: "2.5rem 0 .3rem",
 			fontSize: "160%"
 		}
+	},
+	postDivider: {
+		background: "linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.15), rgba(0,0,0,0.05))"
+	},
+	postHeader: {
+		overflow: "hidden",
+		fontFamily: '"Source Sans Pro", "Helvetica Neue", Helvetica, Arial, sans-serif',
+		fontSize: "240%",
+		fontWeight: 600
 	}
 
 }));
+
+const POST_TYPE_PAGE = "PAGE";
+const POST_TYPE_ARTICLE = "ARTICLE";
 
 const ViewPost = (props) => {
 	const classes = useStyles();
@@ -55,9 +70,20 @@ const ViewPost = (props) => {
 	}
 
 	return usePerformSingleQueryComponent(useFetchTargetPost, data => {
+
+		const {postType, content, title} = data;
+
+		const isArticle = postType === POST_TYPE_ARTICLE;
+
 		return (
-			<Container className={classes.container}>
-				<div className={classes.bsPostViewContent} dangerouslySetInnerHTML={{__html: data.content}}></div>
+			<Container className={classes.container + ' ' + (isArticle ? classes.containerArticle : '')}>
+				{isArticle &&
+				<>
+					<h1 className={classes.postHeader}>{title}</h1>
+					<Divider className={classes.postDivider}/>
+				</>
+				}
+				<div className={classes.bsPostViewContent} dangerouslySetInnerHTML={{__html: content}}></div>
 			</Container>
 		)
 	});

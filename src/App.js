@@ -1,5 +1,5 @@
 import './App.css';
-import {Redirect, Route, Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import Front from "./components/Front/Front";
 import Panel from "./components/Panel/Panel";
 import PrivateRoute from "./components/common/PrivateRoute/PrivateRoute";

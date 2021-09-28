@@ -11,7 +11,7 @@ const frontTheme = createTheme({});
 
 const useStyles = makeStyles((theme) => ({
 	container: {
-		marginTop: "80px"
+		marginTop: "100px"
 	},
 }));
 
