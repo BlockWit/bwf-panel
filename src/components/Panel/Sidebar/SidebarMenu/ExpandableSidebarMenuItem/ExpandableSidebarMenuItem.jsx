@@ -46,7 +46,8 @@ const useStyles = makeStyles((theme) => ({
 	menuSubheader: {
 		textTransform: "uppercase",
 		fontWeight: "bold",
-		fontSize: "0.95em",
+		fontSize: "0.97em",
+		letterSpacing: "normal",
 		color: "#CCCCCC"
 	}
 }));

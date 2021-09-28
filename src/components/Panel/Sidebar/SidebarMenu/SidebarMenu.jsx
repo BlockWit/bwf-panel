@@ -10,6 +10,8 @@ export const MT_EXPANDABLE_ITEM = "MT_EXPANDABLE_ITEM";
 
 const useStyles = makeStyles((theme) => ({
 	divider: {
+		marginTop: "8px",
+		marginBottom: "8px",
 		//background: "#464646",
 		width: "95%",
 		margin: "auto",
